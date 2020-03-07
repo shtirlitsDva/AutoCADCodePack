@@ -177,6 +177,23 @@ namespace Dreambuild.AutoCAD
         }
 
         /// <summary>
+        /// Gets integer.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>The integer.</returns>
+        public static int GetInteger(string message)
+        {
+            var ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            var res = ed.GetInteger(message);
+            if (res.Status == PromptStatus.OK)
+            {
+                return res.Value;
+            }
+
+            return -1;
+        }
+
+        /// <summary>
         /// Gets angle.
         /// </summary>
         /// <param name="message">The message.</param>
